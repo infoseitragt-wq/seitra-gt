@@ -1,0 +1,442 @@
+body{
+	font-family: Poppins, sans-serif;
+	margin: 0;
+	padding: 0;
+	background-color: #f7f7f7;
+	color: #2c2c2c;
+	line-height: 1.6;
+}
+
+header{
+	background-color: #0a3d62;
+	color: white;
+	padding: 80px 40px;
+	text-align: center;
+}
+
+header h1{
+	font-size: 42px;
+	margin-bottom: 10px;
+	letter-spacing: 2 px;
+}
+
+header p{
+	font-size: 18px;
+	opacity: 0.9;
+}
+
+section {
+	max-width: 900px;
+	margin: 40px auto;
+	background-color: white;
+	padding: 50px;
+	border-radius: 8px;
+}
+
+h1{
+	font-weight: 600;
+}
+
+h2{
+	color: #316d9e;
+	margin-bottom: 20px;
+	font-size: 28px;
+	font-weight: 500;
+}
+
+p, li{
+	font-weight: 400;
+}
+
+ul{
+	list-style: none;
+	padding: 0;
+}
+
+ul li{
+	margin-bottom: 10px;
+}
+
+footer{
+	background-color: #0a3d62;
+	color: white;
+	text-align: center;
+	padding: 25px;
+	font-size: 14 px;
+	margin-top: 60px;
+}
+
+nav{
+	background-color: #ffffff;
+	border-bottom: 1px solid #eaeaea;
+	padding: 15px 40px;
+	position: sticky;
+	top: 0;
+}
+
+.menu{
+	display: flex;
+	justify-content: center;
+	gap: 30px;
+	margin: 0;
+	padding: 0;
+}
+
+.menu a{
+	text-decoration: none;
+	color: #0a3d62;
+	font-weight: bold;
+}
+.menu a:hover{
+	color: #1e90ff;
+}
+
+.servicies ul li{
+	background-color: #eaf3f9;
+	padding: 15px 20px;
+	border-radius: 6px;
+	margin-bottom: 15px;
+}
+
+.whatsapp{
+	position: fixed;
+	bottom: 30px;
+	right: 30px;
+	background-color: #25D366;
+	color: white;
+	 padding: 16px 22px;
+    border-radius: 50px;
+    font-size: 18px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.whatsapp:hover{
+	transform: scale(1.1);
+}
+
+.fade-section{
+	opacity: 0;
+	transform: translateY(40px);
+	transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-section.visible{
+	opacity: 1;
+	transform: translateY(0);
+}
+
+@media (max-width: 768px){
+
+	header{
+		padding: 60px 20px;
+	}
+
+	header h1{
+		font-size: 32px;
+	}
+
+	header p{
+		font-size: 16px;
+	}
+
+	nav{
+		padding: 10px 20px;
+	}
+
+	.menu {
+		gap: 15px;
+		flex-wrap: wrap;
+	}
+
+	section{
+		padding: 30px 20px;
+		margin: 20px;
+	}
+
+	h2{
+		font-size: 24px;
+	}
+
+	.servicies ul li{
+		font-size: 15px;
+	}
+
+	.whatsapp {
+		width: 55px;
+		height: 55px;
+		font-size: 24px;
+		bottom: 20px;
+		right: 20px;
+		transition: 
+			transform 0.2s ease,
+			box-shadow 0.2s ease;
+	}
+
+	.whatsapp:hover {
+		transform: scale(1.05);
+		box-shadow: 0 10px 25px rgba(31, 140, 235, 0.3);
+	}
+
+	.values-grid{
+		grid-template-columns: 1fr;
+	}
+}
+.container{
+	max-width: 1100px;
+	margin: 0 auto;
+}
+
+.values-grid{
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 30px;
+	margin-top: 30px;
+}
+
+.value-card{
+	background-color: #f7f7f7;
+	padding: 30px;
+	border-radius: 8px;
+}
+
+.value-card h3{
+	color: #0a3d62;
+	margin-bottom: 10px;
+}
+
+#scroll-progress{
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 4px;
+	width: 0%;
+	background: #1f8ceb; /* azul médico */
+	z-index: 9999;
+	transition: width 0.1s ease-out;
+}
+
+#backToTop {
+	position: fixed;
+	bottom: 110px;
+	right: 25px;
+	width: 45px;
+	height: 45px;
+	border: none;
+	border-radius: 50%;
+	background: #1f8ceb;
+	color: #fff;
+	font-size: 20px;
+	cursor: pointer;
+	z-index: 9999;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+
+	/* CENTRADO PERFECTO */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#backToTop:hover{
+	transform: translateY(-4px);
+}
+
+@media (max-width: 768px){
+	#backToTop{
+		bottom: 130px;
+	}
+}
+
+.faq {
+	max-width: 1000px;
+	margin: 90px auto;
+	padding: 0 40px;
+}
+
+.faq h2{
+	text-align: center;
+	margin-bottom: 40px;
+}
+
+.faq-item{
+	border-bottom: 1px solid #e0e0e0;
+}
+
+.faq-question{
+	width: 100%;
+	background: none;
+	border: none;
+	padding: 20px 0;
+	font-size: 16px;
+	font-weight: 600;
+	text-align: left;
+	cursor: pointer;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.faq-question span{
+	font-size: 22px;
+	transition: transform 0.3s ease;
+}
+
+.faq-answer{
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.4s ease;
+}
+
+.faq-answer p{
+	padding-bottom: 20px;
+	color: #555;
+}
+
+.process{
+	background: #f8fafc;
+	padding: 80px 20px;
+}
+
+.process h2{
+	text-align: center;
+	margin-bottom: 50px;
+}
+
+.process-steps{
+	max-width: 1000px;
+	margin: auto;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 30px;
+}
+
+.step {
+	background: #fff;
+	padding: 30px 20px;
+	border-radius: 12px;
+	text-align: center;
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+	transition: 
+		transform 0.3s ease,
+		box-shadow 0.3s ease;
+}
+
+.step:hover {
+	transform: translateY(-8px);
+	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+.step.number{
+	display: inline-block;
+	font-size: 14px;
+	font-weight: 700;
+	color: #1f8ceb;
+	margin-bottom: 10px;
+}
+
+.step h3{
+	margin-bottom: 10px;
+}
+
+.step p{
+	font-size: 14px;
+	color: #555;
+}
+
+@media (max-width: 900px){
+	.process-steps{
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (max-width: 500px){
+.process-steps{
+		grid-template-columns: 1fr;
+	}
+}
+
+.svg-separator{
+	width: 100%;
+	overflow: hidden;
+	line-height: 0;
+}
+
+.svg-separator svg {
+	width: 100%;
+	height: 90px;
+	display: block;
+}
+
+.hover-line {
+	position: relative;
+	display: inline-block;
+}
+
+.hover-line::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	bottom: -6px;
+	width: 0%;
+	height: 3px;
+	background: #1f8ceb;
+	transition: width 0.3s ease;
+}
+
+@media (hover: none) {
+	.step:hover,
+	.whatsapp:hover {
+		transform: none;
+		box-shadow: none;
+	}
+}
+
+#preloader {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #ffffff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 10000;
+}
+
+.preloader-img{
+	width: 120px;
+	animation: pulse 1.2s ease-in-out infinite;
+}
+
+.loader {
+	width: 45px;
+	height: 45px;
+	border: 4px solid #e0e0e0;
+	border-top: 4px solid #1f8ceb;
+	border-radius: 50%;
+	animation: spin 1s linear infinite;
+}
+
+/* Animación */
+@keyframes spin {
+	to {
+		transform: rotate(360deg);
+	}
+
+}
+
+@keyframes pulse{
+	0% {
+		opacity: 0.4;
+		transform: scale(0.95);
+	}
+	100%{
+		opacity: 1;
+		transform: scale(1);
+	}
+}
