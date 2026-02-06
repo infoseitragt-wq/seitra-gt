@@ -5,6 +5,7 @@ body{
 	background-color: #f7f7f7;
 	color: #2c2c2c;
 	line-height: 1.6;
+	font-size: 16px;
 }
 
 header{
@@ -35,17 +36,19 @@ section {
 
 h1{
 	font-weight: 600;
+	font-size: 48px;
 }
 
 h2{
 	color: #316d9e;
 	margin-bottom: 20px;
-	font-size: 28px;
+	font-size: 36px;
 	font-weight: 500;
 }
 
 p, li{
 	font-weight: 400;
+	font-size: 16px;
 }
 
 ul{
@@ -137,6 +140,10 @@ nav{
 		font-size: 32px;
 	}
 
+	header h2{
+		font-size: 24px;
+	}
+
 	header p{
 		font-size: 16px;
 	}
@@ -166,6 +173,7 @@ nav{
 	.whatsapp {
 		width: 55px;
 		height: 55px;
+		padding: 14px 28px;
 		font-size: 24px;
 		bottom: 20px;
 		right: 20px;
@@ -438,5 +446,18 @@ nav{
 	100%{
 		opacity: 1;
 		transform: scale(1);
+	}
+}
+
+@media (max-width: 768px){
+	.whatsapp {
+		width: 100%;
+		text-align: center;
+	}
+}
+
+@media (max-width: 768px) {
+	.section {
+		padding: 60px 16px;
 	}
 }
