@@ -1,87 +1,148 @@
-console.log("Hola, JS funcionando")
-const sections = document.querySelectorAll('.fade-section');
+/* =========================
+   PRELOADER
+========================= */
 
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
+window.addEventListener("load", function(){
+    const preloader = document.getElementById("preloader");
+    preloader.style.opacity = "0";
+
+    setTimeout(()=>{
+        preloader.style.display = "none";
+    },500);
+});
+
+
+/* =========================
+   SCROLL ANIMATION SECTIONS
+========================= */
+
+const sections = document.querySelectorAll(".fade-section");
+
+function showSections(){
+    const trigger = window.innerHeight * 0.85;
+
+    sections.forEach(section=>{
+        const top = section.getBoundingClientRect().top;
+
+        if(top < trigger){
+            section.classList.add("visible");
         }
     });
-}, {
-    threshold: 0.2
-});
+}
 
-sections.forEach(section => {
-    observer.observe(section);
-});
+window.addEventListener("scroll", showSections);
+showSections();
 
-window.addEventListener("scroll", () => {
-  const scrollTop = window.scrollY;
-  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-  const scrollPercent = (scrollTop / docHeight) * 100;
 
-  document.getElementById("scroll-progress").style.width = scrollPercent + "%";
-});
+/* =========================
+   FAQ ACORDEÓN
+========================= */
 
-const backToTop = document.getElementById("backToTop");
+const questions = document.querySelectorAll(".faq-question");
 
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 300) {
-    backToTop.style.display = "flex";
-  } else {
-    backToTop.style.display = "none";
-  }
-});
+questions.forEach(btn=>{
+    btn.addEventListener("click", ()=>{
 
-backToTop.addEventListener("click", () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
-});
+        const answer = btn.nextElementSibling;
 
-const faqQuestions = document.querySelectorAll(".faq-question");
+        if(answer.style.maxHeight){
+            answer.style.maxHeight = null;
+            btn.querySelector("span").style.transform = "rotate(0deg)";
+        }else{
+            answer.style.maxHeight = answer.scrollHeight + "px";
+            btn.querySelector("span").style.transform = "rotate(45deg)";
+        }
 
-faqQuestions.forEach((question) => {
-  question.addEventListener("click", () => {
-
-    const answer = question.nextElementSibling;
-    const icon = question.querySelector("span");
-
-    // Cerrar las demás
-    document.querySelectorAll(".faq-answer").forEach((item) => {
-      if (item !== answer) {
-        item.style.maxHeight = null;
-        item.previousElementSibling.querySelector("span").textContent = "+";
-      }
     });
+});
 
-    // Toggle actual
-    if (answer.style.maxHeight) {
-      answer.style.maxHeight = null;
-      icon.textContent = "+";
-    } else {
-      answer.style.maxHeight = answer.scrollHeight + "px";
-      icon.textContent = "−";
+
+/* =========================
+   BARRA PROGRESO SCROLL
+========================= */
+
+window.addEventListener("scroll", ()=>{
+    const scrollTop = document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (scrollTop / height) * 100;
+
+    document.getElementById("scroll-progress").style.width = scrolled + "%";
+});
+
+
+/* =========================
+   BOTÓN VOLVER ARRIBA
+========================= */
+
+const backBtn = document.getElementById("backToTop");
+
+window.addEventListener("scroll", ()=>{
+    if(window.scrollY > 400){
+        backBtn.style.opacity = "1";
+        backBtn.style.pointerEvents = "auto";
+    }else{
+        backBtn.style.opacity = "0";
+        backBtn.style.pointerEvents = "none";
     }
-
-  });
 });
 
-window.addEventListener("load", () => {
-  const preloader = document.getElementById("preloader");
-  preloader.style.opacity = "0";
-  preloader.style.pointerEvents = "none";
-
-  setTimeout(() => {
-    preloader.style.display = "none";
-  }, 500);
+backBtn.addEventListener("click", ()=>{
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
 });
 
 
+/* =========================
+   SMOOTH SCROLL NAV LINKS
+========================= */
+
+document.querySelectorAll("a[href^='#']").forEach(anchor=>{
+    anchor.addEventListener("click", function(e){
+        e.preventDefault();
+
+        const target = document.querySelector(this.getAttribute("href"));
+
+        target.scrollIntoView({
+            behavior:"smooth"
+        });
+    });
+});
 
 
+/* =========================
+   GALERÍA EFECTO CLICK
+========================= */
 
+const images = document.querySelectorAll(".gallery-grid img");
 
+images.forEach(img=>{
+    img.addEventListener("click", ()=>{
+        const overlay = document.createElement("div");
+        overlay.style.position="fixed";
+        overlay.style.top="0";
+        overlay.style.left="0";
+        overlay.style.width="100%";
+        overlay.style.height="100%";
+        overlay.style.background="rgba(0,0,0,0.85)";
+        overlay.style.display="flex";
+        overlay.style.alignItems="center";
+        overlay.style.justifyContent="center";
+        overlay.style.zIndex="9999";
 
+        const bigImg = document.createElement("img");
+        bigImg.src = img.src;
+        bigImg.style.maxWidth="90%";
+        bigImg.style.maxHeight="90%";
+        bigImg.style.borderRadius="12px";
+        bigImg.style.boxShadow="0 0 40px rgba(0,0,0,0.5)";
 
+        overlay.appendChild(bigImg);
+        document.body.appendChild(overlay);
+
+        overlay.addEventListener("click", ()=>{
+            overlay.remove();
+        });
+    });
+});
